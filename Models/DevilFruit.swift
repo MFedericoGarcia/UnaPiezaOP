@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DevilFruit: Codable {
+struct DevilFruit: Codable, Identifiable {
    
     var id: Int
     var name: String

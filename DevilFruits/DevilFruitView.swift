@@ -36,8 +36,10 @@ struct DevilFruitView: View {
                 
                 
                 if let urlString = devilFruit.filename, let url = URL(string: urlString) {
-                    CachedAsyncImage(url: url)
+                    CachedAsyncImage2(url: url)
+                        .shadow(radius: 6)
                         .frame(width: 200, height: 200)
+                        .padding()
                 } else {
                     Image(systemName: "atom")
                         .font(.largeTitle)
@@ -57,14 +59,13 @@ struct DevilFruitView: View {
                     }
                     .padding()
                 }
-                .frame(width: 250, height: 200)
+                .frame(maxWidth: .infinity, maxHeight: 200)
                 .shadow(radius: 6)
                 
                 
-
-                Spacer()
             }
             .navigationTitle("Devil Fruit")
+            .navigationBarTitleDisplayMode(.inline)
             .padding()
         }
     }
