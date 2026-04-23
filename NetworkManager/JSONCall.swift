@@ -7,8 +7,8 @@
 
 import Foundation
 
-func loadData<T: Codable>() async -> T {
-    guard let url = URL(string: "https://api.api-onepiece.com/v2/fruits/en") else {
+func loadData<T: Codable>(url: String) async -> T {
+    guard let url = URL(string: url ) else {
         print("Invalid URL")
         return [] as! T
     }
@@ -19,7 +19,6 @@ func loadData<T: Codable>() async -> T {
         let (data, _) = try await URLSession.shared.data(from: url)
         
         if let decodedResponse = try? decoder.decode(T.self, from: data) {
-            
             return decodedResponse
         }
     } catch {
