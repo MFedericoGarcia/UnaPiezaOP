@@ -23,9 +23,10 @@ struct CharacterDetailsView: View {
             
             VStack{
                
-                    Text(character.name)
-                        .font(.custom("ONEPIECE", fixedSize: 50))
-                        .foregroundStyle(.white)
+                Text(character.name)
+                    .font(.scalableCustom("ONEPIECE", baseSize: 50, textStyle:
+                            .largeTitle))
+                    .foregroundStyle(.white)
                 
                 HStack {
                     Text("Bounty: ")
@@ -35,7 +36,7 @@ struct CharacterDetailsView: View {
                 .foregroundStyle(.white)
                 
                 Text("Crew: \(character.crew?.romanName  ?? "No Crew")")
-                    .font(.custom("ONEPIECE", fixedSize: 30))
+                    .font(.scalableCustom("ONEPIECE", baseSize: 30, textStyle: .title1))
                     .foregroundStyle(.white)
                 
                 Text("Devil Fruit: \((character.fruit != nil) ? "" : "No")")
@@ -46,7 +47,7 @@ struct CharacterDetailsView: View {
                         DevilFruitView(devilFruit: fruta)
                     } label: {
                         Text(fruta.romanName ?? "")
-                            .font(.custom("ONEPIECE", fixedSize: 30))
+                            .font(.scalableCustom("ONEPIECE", baseSize: 30, textStyle: .title1))
                             .foregroundStyle(.white)
                         
                         Image(systemName: "chevron.right.square")
@@ -73,11 +74,11 @@ struct CharacterDetailsView: View {
                             })
                     )
                 } else {
-                    VStack {
+                     VStack {
                         Image(systemName: "photo.badge.plus")
                             .font(.largeTitle)
                     }
-                    .padding(.vertical, 40)
+                    .frame(width: 300, height: 500)
                     .foregroundStyle(.indigo)
                 }
             }

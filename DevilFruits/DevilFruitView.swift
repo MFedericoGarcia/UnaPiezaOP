@@ -22,8 +22,8 @@ struct DevilFruitView: View {
                     VStack {
                         if devilFruit.romanName != nil {
                             Text(devilFruit.romanName ?? "")
-                                .font(.custom("ONEPIECE", fixedSize: 50))
-                                .font(.largeTitle.bold())
+                                .font(.scalableCustom("ONEPIECE", baseSize: 50, textStyle:
+                                        .largeTitle))
                         }
                         Text(devilFruit.name)
                             .font(.title2.bold())
@@ -41,10 +41,14 @@ struct DevilFruitView: View {
                         .frame(width: 200, height: 200)
                         .padding()
                 } else {
-                    Image(systemName: "atom")
-                        .font(.largeTitle)
-                        .tint(.indigo)
-                        .frame(width: 200, height: 200)
+                    VStack{
+                        Image(systemName: "atom")
+                            .font(.system(size: 150))
+                            .tint(.indigo)
+                        Text("No Image")
+                            .font(.largeTitle)
+                    }
+                    .frame(width: 200, height: 200)
                 }
                 
                 Spacer()
