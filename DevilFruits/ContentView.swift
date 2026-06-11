@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @State private var frutas: [DevilFruit] = []
     @State private var searchText = ""
+    private let service = DevilFruitService()
 
     var filteredNames: [DevilFruit] {
         if searchText.isEmpty {
@@ -72,7 +73,7 @@ struct ContentView: View {
         }
         .onAppear {
             Task {
-                frutas = await loadData(url: Endpoints.devilFruits)
+                frutas = try await service.fetchFruits()
             }
         }
     }

@@ -13,6 +13,8 @@ struct AllCharactersView: View {
     
     @State private var searchText = ""
 
+    private let service = CharacterService()
+    
     var filteredNames: [Character] {
         if searchText.isEmpty {
              characters
@@ -60,7 +62,7 @@ struct AllCharactersView: View {
         }
         .onAppear {
             Task {
-                characters = await loadData(url: Endpoints.allCharacters)
+                characters = try await service.fetchCharacters()
             }
         }
     }
